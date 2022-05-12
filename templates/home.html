@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} 
+
+{% block content %}
+<!-- 
+   <h5 class="text-center">hallo user {{email}}</h5> -->
+   
+   <h1 class="text-center my-3">Notes</h1>
+   <div class="container">
+    <ul class="list-group list-group-flush" id="notes">
+        {% for data in data %}
+        <li class="list-group-item">
+          <td>{{ data.data }}</td> <br><br>
+          <div class="">
+            <p style="font-size:x-small"> 
+                <a href="/update/{{ data.id }}" class="text-primary">update</a>
+                <a  href="/delete/{{ data.id }}" class="text-danger" role="button">delete</a>
+            </p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      <form action="/" method="POST" class="mt-5">
+            <textarea name="data" id="data" type="text" class="form-control"></textarea>
+            <div class="text-center my-4">
+                <button type="submit" class="btn btn-primary text-center">Add</button>
+              </div>
+      </form>
+   </div>
+   
+  
+{% endblock %}
